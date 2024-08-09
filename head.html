@@ -1,6 +1,13 @@
 <script type="text/javascript">
 //<![CDATA[
-
+window.addEventListener('DOMContentLoaded', (event) => {
+            // Hide the link with the id 'login'
+            var loginLink = document.getElementById('login');
+            if (loginLink) {
+                loginLink.style.display = 'none';  // Or use 'visibility: hidden' if preferred
+            }
+        });
+        
 var navItemsDE = [
     {
         id: 'cc-nav-view-2272231012',
