@@ -1,109 +1,113 @@
 <script type="text/javascript">
-//<![CDATA[
-window.addEventListener('DOMContentLoaded', (event) => {
-            // Hide the link with the id 'login'
+    //<![CDATA[
+        window.addEventListener('DOMContentLoaded', (event) => {
             var loginLink = document.getElementById('login');
             if (loginLink) {
                 loginLink.style.display = 'none';  // Or use 'visibility: hidden' if preferred
             }
+            var formNote = document.querySelector(".cc-m-form-note");
+            if (formNote) {
+                formNote.style.display = 'none';  
+            }
         });
         
-var navItemsDE = [
-    {
-        id: 'cc-nav-view-2272231012',
-        href: 'https://ramenlab-eu.jimdofree.com/start-seite/',
-        dataLinkTitle: 'Start Seite',
-        textContent: 'Start Seite'
-    },
-    {
-        id: 'cc-nav-view-2272231013',
-        href: 'https://ramenlab-eu.jimdofree.com/produkte/',
-        dataLinkTitle: 'Produkte',
-        textContent: 'Produkte'
-    },
-    // Add more items as needed
-];
-
-var navItemsEN = [
-    {
-        id: 'cc-nav-view-2272231012',
-        href: 'https://ramenlab-eu.jimdofree.com/',
-        dataLinkTitle: 'Home',
-        textContent: 'Home'
-    },
-    {
-        id: 'cc-nav-view-2272231013',
-        href: 'https://ramenlab-eu.jimdofree.com/products/',
-        dataLinkTitle: 'Products',
-        textContent: 'Products'
-    }
-    // Add more items as needed
-];
-
-var navItemsLAN = [
-    {
-        id: 'cc-nav-view-2272231013',
-        href: 'https://ramenlab-eu.jimdofree.com/start-seite/',
-        dataLinkTitle: 'DE',
-        textContent: 'DE'
-    },
-    {
-        id: 'cc-nav-view-2272231013',
-        href: 'https://ramenlab-eu.jimdofree.com/',
-        dataLinkTitle: 'EN',
-        textContent: 'EN'
-    }
-    // Add more items as needed
-];
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    var element_en = document.getElementById('en_language');
-    var element_de = document.getElementById('de_language');
-
-    // return 0;
+        function navigation(p) {
+            var parentElement = p.querySelector('ul'); 
+            if (parentElement) {
+                navItems.forEach(function(item) {
+                    // Create a new list item
+                    var newListItem = document.createElement('li');
+                    newListItem.id = item.id;
+                    newListItem.className = 'jmd-nav__list-item-0';
     
-    if (element_de) {
-        console.log('de');
-        navItems = [...navItemsDE, ...navItemsLAN];
-    } else {
-        console.log('en');
-        navItems = [...navItemsEN, ...navItemsLAN];
-    }
+                    // Create a new anchor tag
+                    var newLink = document.createElement('a');
+                    newLink.href = item.href;
+                    newLink.setAttribute('data-link-title', item.dataLinkTitle);
+                    newLink.textContent = item.textContent;
     
-    var navigationContainer = document.querySelector('div[data-container="navigation"]');
-    if (navigationContainer) {
-        // Define the navigation items to add
-
-        // Find the parent element to append the new list items
-        var parentElement = navigationContainer.querySelector('ul'); // or use the appropriate selector
-        if (parentElement) {
-            // Loop through each nav item and create elements
-            navItems.forEach(function(item) {
-                // Create a new list item
-                var newListItem = document.createElement('li');
-                newListItem.id = item.id;
-                newListItem.className = 'jmd-nav__list-item-0';
-
-                // Create a new anchor tag
-                var newLink = document.createElement('a');
-                newLink.href = item.href;
-                newLink.setAttribute('data-link-title', item.dataLinkTitle);
-                newLink.textContent = item.textContent;
-
-                // Append the anchor tag to the list item
-                newListItem.appendChild(newLink);
-
-                // Append the list item to the parent element
-                parentElement.appendChild(newListItem);
-            });
+                    // Append the anchor tag to the list item
+                    newListItem.appendChild(newLink);
+    
+                    // Append the list item to the parent element
+                    parentElement.appendChild(newListItem);
+                  
+                });
+            }
         }
-    }
-
     
-
-
-
-});
-//]]>
+        var navItemsDE = [
+            {
+                href: 'https://www.euramen.com/start-seite/',
+                dataLinkTitle: 'Start Seite',
+                textContent: 'Start Seite'
+            },
+            {
+                href: 'https://www.euramen.com/produkte/',
+                dataLinkTitle: 'Produkte',
+                textContent: 'Produkte'
+            },
+            {
+                href: 'https://www.euramen.com/über-uns/',
+                dataLinkTitle: 'Über uns',
+                textContent: 'Über uns'
+            },
+            
+            
+        ];
+        
+        var navItemsEN = [
+            {
+                href: 'https://www.euramen.com/',
+                dataLinkTitle: 'Home',
+                textContent: 'Home'
+            },
+            {
+                href: 'https://www.euramen.com/products/',
+                dataLinkTitle: 'Products',
+                textContent: 'Products'
+            }
+            // Add more items as needed
+        ];
+        
+        var navItemsLAN = [
+            {
+                // id: 'cc-nav-view-2273010112',
+                href: 'https://www.euramen.com/start-seite/',
+                dataLinkTitle: 'DE',
+                textContent: 'DE'
+            },
+            {
+                // id: 'cc-nav-view-2272227812',
+                href: 'https://www.euramen.com/',
+                dataLinkTitle: 'EN',
+                textContent: 'EN'
+            }
+            // Add more items as needed
+        ];
+        
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var element_en = document.getElementById('en_language');
+            var element_de = document.getElementById('de_language');
+        
+            if (element_de) {
+                console.log('de');
+                navItems = [...navItemsDE, ...navItemsLAN];
+            } else {
+                console.log('en');
+                navItems = [...navItemsEN, ...navItemsLAN];
+            }
+            
+            // var navigationContainer = document.querySelector('jtpl-navigation');
+            var navigationContainer_mobile = document.querySelector('div[data-container="navigation"]');
+            var navigationContainer = document.querySelector('div[class="jtpl-navigation"]');
+            console.log(navigationContainer);
+            
+            navigation(navigationContainer_mobile);
+            navigation(navigationContainer);
+            });
+        
+    
+    //]]>
 </script>
