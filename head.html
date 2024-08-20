@@ -16,6 +16,12 @@
             if (parentElement) {
                 navItems.forEach(function(item) {
                     // Create a new list item
+                    if (item.textContent == 'DE') {
+                        const li = document.createElement('li');
+                        li.style.display = 'inline-block'; 
+                        li.style.marginRight = '30px'; 
+                        parentElement.appendChild(li);
+                    }
                     var newListItem = document.createElement('li');
                     newListItem.id = item.id;
                     newListItem.className = 'jmd-nav__list-item-0';
@@ -81,7 +87,7 @@
                 dataLinkTitle: 'Contact',
                 textContent: 'Contact'
             },
-           
+        
         ];
         
         var navItemsJP = [
@@ -105,7 +111,7 @@
                 dataLinkTitle: 'お問い合わせ',
                 textContent: 'お問い合わせ'
             },
-
+            
         ];
         
         var navItemsLAN = [
@@ -153,7 +159,5 @@
             navigation(navigationContainer_mobile);
             navigation(navigationContainer);
             });
-        
-    
     //]]>
 </script>
