@@ -57,8 +57,7 @@
                 dataLinkTitle: 'Kontakt',
                 textContent: 'Kontakt'
             },
-            
-            
+
         ];
         
         var navItemsEN = [
@@ -78,37 +77,70 @@
                 textContent: 'About us'
             },
             {
-                href: 'https://www.euramen.com/contac-1/',
+                href: 'https://www.euramen.com/contact-1/',
                 dataLinkTitle: 'Contact',
                 textContent: 'Contact'
             },
+           
+        ];
+        
+        var navItemsJP = [
+            {
+                href: 'https://www.euramen.com/ホーム/',
+                dataLinkTitle: 'ホーム',
+                textContent: 'ホーム'
+            },
+            {
+                href: 'https://www.euramen.com/製品紹介/',
+                dataLinkTitle: '製品紹介',
+                textContent: '製品紹介'
+            },
+            {
+                href: 'https://www.euramen.com/会社概要/',
+                dataLinkTitle: '会社概要',
+                textContent: '会社概要'
+            },
+            {
+                href: 'https://www.euramen.com/お問い合せ/',
+                dataLinkTitle: 'お問い合わせ',
+                textContent: 'お問い合わせ'
+            },
+
         ];
         
         var navItemsLAN = [
             {
-                // id: 'cc-nav-view-2273010112',
                 href: 'https://www.euramen.com/start-seite/',
                 dataLinkTitle: 'DE',
                 textContent: 'DE'
             },
             {
-                // id: 'cc-nav-view-2272227812',
                 href: 'https://www.euramen.com/',
                 dataLinkTitle: 'EN',
                 textContent: 'EN'
+            },
+            {
+                href: 'https://www.euramen.com/ホーム/',
+                dataLinkTitle: 'JP',
+                textContent: 'JP'
             }
-            // Add more items as needed
+            
         ];
         
         
         document.addEventListener('DOMContentLoaded', function() {
             var element_en = document.getElementById('en_language');
             var element_de = document.getElementById('de_language');
+            var element_jp = document.getElementById('jp_language');
         
             if (element_de) {
                 console.log('de');
                 navItems = [...navItemsDE, ...navItemsLAN];
-            } else {
+            } else if (element_jp) {
+                console.log('jp');
+                navItems = [...navItemsJP, ...navItemsLAN];
+            }
+            else {
                 console.log('en');
                 navItems = [...navItemsEN, ...navItemsLAN];
             }
