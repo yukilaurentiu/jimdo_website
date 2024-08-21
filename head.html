@@ -1,27 +1,21 @@
 <script type="text/javascript">
     //<![CDATA[
-        window.addEventListener('DOMContentLoaded', (event) => {
-            var loginLink = document.getElementById('login');
-            if (loginLink) {
-                loginLink.style.display = 'none';  // Or use 'visibility: hidden' if preferred
+        function hideMinus() {
+            var listItem = document.getElementById("cc-nav-view-2272667412");
+            
+            // Check if the <li> element exists and remove it
+            if (listItem) {
+                listItem.remove();  // This removes the <li> element from the DOM
             }
-            var formNote = document.querySelector(".cc-m-form-note");
-            if (formNote) {
-                formNote.style.display = 'none';  
-            }
-        });
+        }
         
-        // adding menu in Navbar
         function navigation(p) {
             var parentElement = p.querySelector('ul'); 
             if (parentElement) {
                 navItems.forEach(function(item) {
                     // Create a new list item
                     if (item.textContent == 'DE') {
-                        const li = document.createElement('li');
-                        li.style.display = 'inline-block'; 
-                        li.style.marginRight = '30px'; 
-                        parentElement.appendChild(li);
+                       spacing(parentElement);
                     }
                     var newListItem = document.createElement('li');
                     newListItem.id = item.id;
@@ -42,8 +36,14 @@
                 });
             }
         }
+        
+        function spacing(parentElement) {
+            const li = document.createElement('li');
+            li.style.display = 'inline-block'; 
+            li.style.marginRight = '30px'; 
+            parentElement.appendChild(li);
+        }
     
-        // each language menu and link
         var navItemsDE = [
             {
                 href: 'https://www.euramen.com/start-seite/',
@@ -116,7 +116,6 @@
             
         ];
         
-        // switch language 
         var navItemsLAN = [
             {
                 href: 'https://www.euramen.com/start-seite/',
@@ -136,38 +135,32 @@
             
         ];
         
-        // when user click language, only show the chosen language menu
-        document.addEventListener('DOMContentLoaded', function() {
+        function editNav() {
             var element_en = document.getElementById('en_language');
             var element_de = document.getElementById('de_language');
             var element_jp = document.getElementById('jp_language');
         
             if (element_de) {
-                console.log('de');
                 navItems = [...navItemsDE, ...navItemsLAN];
             } else if (element_jp) {
-                console.log('jp');
                 navItems = [...navItemsJP, ...navItemsLAN];
             }
             else {
-                console.log('en');
                 navItems = [...navItemsEN, ...navItemsLAN];
             }
             
-        // modify navbar work laptop and mobile size
-        var navigationContainer_mobile = document.querySelector('div[data-container="navigation"]');
-        var navigationContainer = document.querySelector('div[class="jtpl-navigation"]');
-        
-        navigation(navigationContainer_mobile);
-        navigation(navigationContainer);
-        });
-
-
-        // added impressum in footer
-        function addImpressum(p) {
-            if (p) {  // Check if p is valid
-                var parentElement = p.querySelector('.j-meta-links');
-                if (parentElement) {  // Check if .j-meta-links is found
+            // var navigationContainer = document.querySelector('jtpl-navigation');
+            var navigationContainer_mobile = document.querySelector('div[data-container="navigation"]');
+            var navigationContainer = document.querySelector('div[class="jtpl-navigation"]');
+            navigation(navigationContainer_mobile);
+            navigation(navigationContainer);
+        }
+            
+        function addImpressum() {
+            var footerContainer = document.querySelector('div.jtpl-footer.footer-options');
+            if (footerContainer) {  // Check if p is valid
+                var parentElement = footerContainer.querySelector('.j-meta-links');
+                if (parentElement) {  
                     var impressumLink = document.createElement('a');
                     impressumLink.href = "https://www.euramen.com/impressum/";
                     impressumLink.textContent = "Impressum";
@@ -179,11 +172,16 @@
                 }
             }
         }
-
-        // Ensure the DOM is fully loaded before running the script
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            hideMinus();
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            hideMinus();
+            editNav();
+        });
         document.addEventListener('DOMContentLoaded', function() {
-            var footerContainer = document.querySelector('div.jtpl-footer.footer-options'); 
-            addImpressum(footerContainer);
-});
-
+            addImpressum();
+        });
+    //]]>
 </script>
