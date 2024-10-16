@@ -33,6 +33,10 @@
                     // Append the list item to the parent element
                     parentElement.appendChild(newListItem);
                 });
+                
+                // Add spacing before the Instagram icon
+                spacing(parentElement);
+                
                 // Create a separate list item for the Instagram icon
                 var instagramListItem = document.createElement('li');
                 instagramListItem.className = 'jmd-nav__list-item-0';
@@ -54,9 +58,11 @@
         
                 // Append the Instagram link to the Instagram list item
                 instagramListItem.appendChild(instagramLink);
-                instagramLink.style.marginLeft = '15px';
+                instagramLink.style.paddingLeft = '5px';
+                
                 // Append the Instagram list item to the parent element
                 parentElement.appendChild(instagramListItem);
+               
             }
         }
         
