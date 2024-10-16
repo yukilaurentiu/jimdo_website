@@ -32,8 +32,31 @@
     
                     // Append the list item to the parent element
                     parentElement.appendChild(newListItem);
-                  
                 });
+                // Create a separate list item for the Instagram icon
+                var instagramListItem = document.createElement('li');
+                instagramListItem.className = 'jmd-nav__list-item-0';
+
+                var instagramLink = document.createElement('a');
+                instagramLink.href = 'https://www.instagram.com/'; 
+                instagramLink.target = '_blank'; 
+                
+                // Create an image for the icon
+                var icon = document.createElement('img');
+                icon.src = 'https://raw.githubusercontent.com/yukilaurentiu/jimdo_website/dfdbcda8118622ef2a5082eb12157a86848723f7/images/white_instagram.png';
+                icon.alt = 'Instagram Logo';
+                icon.style.width = '35px';  
+                icon.style.height = '35px';
+                icon.style.verticalAlign = 'middle';
+        
+                // Append the icon to the Instagram link
+                instagramLink.appendChild(icon);
+        
+                // Append the Instagram link to the Instagram list item
+                instagramListItem.appendChild(instagramLink);
+                instagramLink.style.marginLeft = '15px';
+                // Append the Instagram list item to the parent element
+                parentElement.appendChild(instagramListItem);
             }
         }
         
@@ -145,9 +168,9 @@
                 href: 'https://www.euramen.com/ホーム/',
                 dataLinkTitle: 'JP',
                 textContent: 'JP'
-            }
-            
+            },
         ];
+        
         
         function editNav() {
             var element_en = document.getElementById('en_language');
@@ -186,6 +209,7 @@
                 }
             }
         }
+        
         
         window.addEventListener('DOMContentLoaded', () => {
             hideMinus();
